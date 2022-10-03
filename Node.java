@@ -1,8 +1,8 @@
 public class Node {
-    int item;
+    BinaryTree.Node item;
     Node tail;
 
-    public Node(int item){
+    public Node(BinaryTree.Node item){
         this.item = item;
         this.tail = null;
     }
