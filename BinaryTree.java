@@ -1,6 +1,5 @@
 import java.util.EmptyStackException;
 import java.util.Iterator;
-import java.util.Stack;
 
 public class BinaryTree implements Iterable<Integer> {
     public class Node {
@@ -36,13 +35,13 @@ public class BinaryTree implements Iterable<Integer> {
 
     public class TreeIterator implements Iterator<Integer> {
         private Node next;
-        private Stack<Node> stack;
+        private Queue queue;
 
         public TreeIterator() {
-            stack = new Stack<Node>();
+            queue = new Queue();
             next = root;
             while (next.left != null) {
-                stack.push(next);
+                queue.add(next);
                 next = next.left;
 
             }
@@ -50,7 +49,7 @@ public class BinaryTree implements Iterable<Integer> {
 
         @Override
         public boolean hasNext() {
-            if (stack.empty()) {
+            if (queue.front == null && queue.back == null) {
                 return false;
             }
             return true;
@@ -63,13 +62,13 @@ public class BinaryTree implements Iterable<Integer> {
             // are we done yet?
 
             if (next.right != null) { // do we have something to the right?
-                stack.push(next.right); // save the thing to the right
+                queue.add(next.right); // save the thing to the right
                 next = next.right; // step right
 
                 if (next.left != null) { // do we have something to the left?
-                    stack.push(next); // push left to stack
+                    queue.add(next); // add left to queue
                     while (next.left != null) {
-                        stack.push(next);
+                        queue.add(next);
                         next = next.left;
                     }
                 }
@@ -80,7 +79,7 @@ public class BinaryTree implements Iterable<Integer> {
                 throw new EmptyStackException();
             }
 
-            next = stack.pop();
+            next = queue.remove();
             return returnvalue;
         }
 
