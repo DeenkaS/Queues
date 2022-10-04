@@ -39,5 +39,14 @@ public class Queue {
         return temp.item;
     }
 
+    boolean empty(){
+        if(this.back == null){
+            return true;
+        }
+        return false;
+
+
+    }
+
 
 }
