@@ -1,4 +1,4 @@
-import java.util.EmptyStackException;
+
 import java.util.Iterator;
 
 public class BinaryTree implements Iterable<Integer> {
