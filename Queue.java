@@ -8,7 +8,7 @@ public class Queue {
     }
 
     //adds item to queue    
-    void add(int item){
+    void add(BinaryTree.Node item){
         Node temp = new Node(item);
 
         //if queue is empty make temp node front of queue
@@ -23,7 +23,7 @@ public class Queue {
         this.back = temp;
     }
 
-    Integer remove(){
+    BinaryTree.Node remove(){
         
         if(this.front == null){
             return null;
@@ -37,6 +37,15 @@ public class Queue {
         }
 
         return temp.item;
+    }
+
+    boolean empty(){
+        if(this.back == null){
+            return true;
+        }
+        return false;
+
+
     }
 
 
